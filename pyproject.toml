@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "github_stats"
+version = "0.1.0"
+description = ""
+authors = ["idrodriguez <irodriguez.salguero@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+ck = "^2.5"
+numpy = "^1.20"
+PyGithub = "^1.54"
+DateTime = "^4.3"
+pandas = "^1.3.4"
+
+[tool.poetry.dev-dependencies]
+ck = "^2.5"
+numpy = "^1.20"
+PyGithub = "^1.54"
+pytest = "^6.2"
+flake8 = "^4.0.1"
+black = {version = "^21.9b0", allow-prereleases = true}
+pandas = "^1.3.4"
+openpyxl = "^3.0.9"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
