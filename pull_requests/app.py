@@ -1,18 +1,15 @@
-import pandas as pd
+import typer
 
 import stats
 
-input_file_excel = "input/GitHub Repositories.xlsx"
-df = pd.read_excel(input_file_excel, sheet_name="repositories")
+app = typer.Typer()
 
-repositories = pd.DataFrame()
-for index, repo in df.iterrows():
 
-    kwargs = {"repo_name": repo["Repository"]}
-    ret = stats.main(**kwargs)
-    if ret is not None:
-        repositories = repositories.append(ret)
+@app.command()
+def pr(repo: str):
+    ret = stats.main(repo)
+    return ret.to_csv()
 
-repositories.to_excel(
-    "export/pull_requests_stats.xlsx", sheet_name="pull_request_stats", index=False
-)
+
+if __name__ == "__main__":
+    app()

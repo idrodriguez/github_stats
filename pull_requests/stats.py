@@ -16,9 +16,9 @@ GITHUB_URL = "https://github.com/"
 
 def get_token():
     try:
-        "GITHUB_AUTH_TOKEN" in os.environ
+        "GITHUB_OS_AUTH_TOKEN" in os.environ
     except KeyError:
-        print("Please set the environment variable GITHUB_AUTH_TOKEN")
+        print("Please set the environment variable GITHUB_OS_AUTH_TOKEN")
         sys.exit(1)
     return os.environ["GITHUB_OS_AUTH_TOKEN"]
 
@@ -102,8 +102,8 @@ def generate_statistics(pull_requests):
     return summary
 
 
-def main(**kawrgs):
-    repo_name = kawrgs["repo_name"]
+def main(repo: str):
+    repo_name = repo
     xls_file_name = repo_name.split("/")[1] + ".xlsx"
 
     repository = get_repository(repo_name)
