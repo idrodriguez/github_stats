@@ -1,6 +1,5 @@
 import os
 import statistics
-import sys
 from datetime import datetime, timedelta
 
 import numpy
@@ -14,17 +13,8 @@ PATH_TOTAL_FILES = "export/raw/total/"
 GITHUB_URL = "https://github.com/"
 
 
-def get_token():
-    try:
-        "GITHUB_OS_AUTH_TOKEN" in os.environ
-    except KeyError:
-        print("Please set the environment variable GITHUB_OS_AUTH_TOKEN")
-        sys.exit(1)
-    return os.environ["GITHUB_OS_AUTH_TOKEN"]
-
-
 def get_repository(repository_name):
-    token = get_token()
+    token = os.environ.get("GITHUB_OS_AUTH_TOKEN", None)
     github_connector = Github(token)
 
     try:
