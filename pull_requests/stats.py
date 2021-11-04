@@ -16,13 +16,8 @@ GITHUB_URL = "https://github.com/"
 def get_repository(repository_name):
     token = os.environ.get("GITHUB_OS_AUTH_TOKEN", None)
     github_connector = Github(token)
-
-    try:
-        repository = github_connector.get_repo(repository_name)
-        return repository
-    except Exception:
-        pass
-    return None
+    repository = github_connector.get_repo(repository_name)
+    return repository
 
 
 def get_pull_requests_from_repository(repository):
